@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { SiCplusplus, SiTailwindcss } from "react-icons/si";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -42,10 +41,14 @@ export const Hero = () => {
           >
             DevanG
           </motion.h1>
-          <motion.h2 className="hero-subtitle" variants={fadeInUp}>
-            {" "}
-            LEARNING - BUILDING - GROWING
+          <motion.h2
+            className="hero-subtitle"
+            variants={fadeInUp}
+            style={{ fontSize: "1.6rem" }}
+          >
+            Full-Stack Developer | Competitive Programmer
           </motion.h2>
+
           <motion.p className="hero-description" variants={fadeInUp}>
             Building impactful digital solutions, I combine robust full-stack
             web development with integrated AI features. My expertise in data
@@ -53,50 +56,80 @@ export const Hero = () => {
             me to create highly functional and innovative user experiences.
           </motion.p>
 
-          <motion.div className="cta-buttons" variants={staggerContainer}>
-            <motion.a
-              href="#projects"
-              className="cta-primary"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+          {/* Combined container for buttons and social links */}
+          <div
+            className="actions-container"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              flexWrap: "wrap",
+              gap: "1.5rem",
+              marginTop: "1.5rem",
+            }}
+          >
+            <motion.div
+              className="cta-buttons"
+              variants={fadeInUp}
+              style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}
             >
-              {" "}
-              View My Projects
-            </motion.a>
-            <motion.a
-              href="#coding-profiles"
-              className="cta-secondary"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              <motion.a
+                href="#projects"
+                className="cta-secondary"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                View My Projects
+              </motion.a>
+              <motion.a
+                href="#coding-profiles"
+                className="cta-secondary"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                View Coding Profiles
+              </motion.a>
+              {/* === MODIFIED RESUME BUTTON === */}
+              <motion.a
+                href="/Dev_Resume.pdf" // Link to your resume in the /public folder
+                target="_blank" // Opens the link in a new tab
+                rel="noopener noreferrer" // Recommended for security
+                className="cta-primary" // Same style as the "View My Projects" button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                View / Download Resume
+              </motion.a>
+              <motion.a
+                href="#contact"
+                className="cta-primary"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Contact Me
+              </motion.a>
+            </motion.div>
+            {/* <motion.div
+              className="social-links"
+              variants={staggerContainer}
+              style={{ marginLeft: "1.5rem" }}
             >
-              Coding Profiles
-            </motion.a>
-            <motion.a
-              href="#contact"
-              className="cta-secondary"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Contact Me
-            </motion.a>
-          </motion.div>
-          <motion.div className="social-links" variants={staggerContainer}>
-            <motion.a href="https://github.com/Devang-10" target="_blank" style={{ marginLeft: "1rem" }}>
-              <i className="fab fa-github"> </i>
-            </motion.a>
-            <motion.a
-              href="https://linkedin.com/in/devangjain10"
-              target="_blank"
-            >
-              <i className="fab fa-linkedin"></i>
-            </motion.a>
-            <motion.a
-              href="https://codolio.com/profile/Devang_10"
-              target="_blank"
-            >
-              <i className="fa-solid fa-code"></i>
-            </motion.a>
-          </motion.div>
+              <motion.a href="https://github.com/Devang-10" target="_blank">
+                <i className="fab fa-github"> </i>
+              </motion.a>
+              <motion.a
+                href="https://linkedin.com/in/devangjain10"
+                target="_blank"
+              >
+                <i className="fab fa-linkedin"></i>
+              </motion.a>
+              <motion.a
+                href="https://codolio.com/profile/Devang_10"
+                target="_blank"
+              >
+                <i className="fa-solid fa-code"></i>
+              </motion.a>
+            </motion.div> */}
+          </div>
         </motion.div>
 
         <motion.div
@@ -105,38 +138,69 @@ export const Hero = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <div className="code-display">
-            <SyntaxHighlighter
-              language="typescript"
-              customStyle={{
-                margin: 0,
-                padding: "2rem",
-                height: "100%",
-                borderRadius: "20px",
-                background: "rgba(30, 41, 59, 0.8)",
-                backdropFilter: "blur(10px)",
-                marginBottom: 50,
-              }}
-              style={vscDarkPlus}
-            >
-              {`const aboutMe: DeveloperProfile = {
-  name: "Devang Jain",
-  origin: "🌍 Somewhere between a coffee shop and a terminal",
-  role: "Fullstack Web Developer and Competitive Programmer",
-  stack: {
-    languages: ["C++", "Python", "JavaScript"],
-    frameworks: ["React", "TailwindCSS", "React Router", "Node.js"],
-    tools: ["Git", "GitHub", "VSCode", "Postman"],
-  },
-  skills: ["Problem Solving", "Web Development", "API Integration"],
-  interests: ["Full stack development", "Competitive programming"],
-  missionStatement:
-    "Turning ideas into interfaces and bugs into features",
-  availability: "Available for hire",
-};
+          <div
+            className="skills-grid"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(90px, 1fr))",
+              gap: "1.5rem",
+              padding: "2rem",
+              borderRadius: "20px",
+              background: "rgba(30, 41, 59, 0.8)",
+              backdropFilter: "blur(10px)",
+              marginBottom: 50,
+              textAlign: "center",
+            }}
+          >
+            {/* Row 1 */}
+            <div style={{ color: "#61DAFB" }} title="React">
+              <i className="fab fa-react" style={{ fontSize: "3rem" }}></i>
+              <p style={{ fontSize: "1rem", marginTop: "0.8rem" }}>React</p>
+            </div>
+            <div style={{ color: "#339933" }} title="Node.js">
+              <i className="fab fa-node-js" style={{ fontSize: "3rem" }}></i>
+              <p style={{ fontSize: "1rem", marginTop: "0.8rem" }}>Node</p>
+            </div>
+            <div style={{ color: "#518fbeff" }} title="MySQL">
+              <i className="fas fa-database" style={{ fontSize: "3rem" }}></i>
+              <p style={{ fontSize: "1rem", marginTop: "0.8rem" }}>MySQL</p>
+            </div>
+            {/* Updated Tailwind Icon */}
+            <div style={{ color: "#38B2AC" }} title="Tailwind CSS">
+              <SiTailwindcss style={{ fontSize: "3rem" }} />
+              <p style={{ fontSize: "1rem", marginTop: "0.8rem" }}>Tailwind</p>
+            </div>
 
-`}
-            </SyntaxHighlighter>
+            <div style={{ color: "#E34F26" }} title="Python">
+              <i className="fab fa-python" style={{ fontSize: "3rem" }}></i>
+              <p style={{ fontSize: "1rem", marginTop: "0.8rem" }}>Python</p>
+            </div>
+
+            {/* Row 2 */}
+            <div style={{ color: "#3097e7ff" }} title="C++">
+              <SiCplusplus style={{ fontSize: "3rem" }} />
+              <p style={{ fontSize: "1rem", marginTop: "0.8rem" }}>C++</p>
+            </div>
+
+            <div style={{ color: "#E34F26" }} title="HTML">
+              <i className="fab fa-html5" style={{ fontSize: "3rem" }}></i>
+              <p style={{ fontSize: "1rem", marginTop: "0.8rem" }}>HTML</p>
+            </div>
+            <div style={{ color: "#009dffff" }} title="CSS">
+              <i className="fab fa-css3-alt" style={{ fontSize: "3rem" }}></i>
+              <p style={{ fontSize: "1rem", marginTop: "0.8rem" }}>CSS</p>
+            </div>
+            <div style={{ color: "#FF6C37" }} title="Postman">
+              <i
+                className="fa-solid fa-rocket"
+                style={{ fontSize: "3rem" }}
+              ></i>
+              <p style={{ fontSize: "1rem", marginTop: "0.8rem" }}>Postman</p>
+            </div>
+            <div style={{ color: "#F05032" }} title="Git">
+              <i className="fab fa-git-alt" style={{ fontSize: "3rem" }}></i>
+              <p style={{ fontSize: "1rem", marginTop: "0.8rem" }}>Git</p>
+            </div>
           </div>
 
           <motion.div

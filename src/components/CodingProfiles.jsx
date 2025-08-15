@@ -36,7 +36,7 @@ const codingProfiles = [
 
 export const Coding = () => {
   return (
-    <section className="coding-profiles-section" id="coding-profiles">
+    <section className="coding-profiles-section" id="coding-profiles" >
       <h2>Coding Profiles</h2>
       <div className="profiles-list">
         {codingProfiles.map((profile, index) => (
